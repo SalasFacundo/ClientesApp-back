@@ -115,13 +115,7 @@ public class ClienteRestController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
 		
-		Cliente clienteActual = clienteService.findById(id);
 		Map<String, Object> response = new HashMap<>();
-		
-		if(clienteActual == null) {
-			response.put("mensaje", "Error: No se pudo eliminar el cliente ID: " + id.toString() + " no existe en la base de datos");
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-		}
 		
 		try {
 			clienteService.delete(id);
